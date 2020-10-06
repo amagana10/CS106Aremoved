@@ -56,6 +56,13 @@ public class CheckingAccount {
 		return cBalance;
 	}
 
+
+
+	public void deposit(int i) {
+		
+		
+	}
+
 	
 }
 

@@ -79,7 +79,8 @@ public class AccountHolder {
 		
 		return null;
 	}
-	private String toString() {
+	public String toString() {
+		return firstName;
 		
 		
 	}
