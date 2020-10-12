@@ -28,9 +28,30 @@ public class MeritAmericaBankApp {
 		ah1.addCheckingAccount(5000.0);
 		ah1.addSavingsAccount(50000.00);
 		System.out.println("Total checking account balance = "+ah1.getCheckingBalance()+ "  and Total saving account balance = " +ah1.getSavingsBalance());
+	 
+	  
+		ah1.addCDAccount(MeritBank.getBestCDOffering(1000), 1000);
+		MeritBank.addAccountHolder(ah1);
 	
-	
-	
+		AccountHolder ah2 = new AccountHolder("Lorelai", "V.", "Gilmore", "876543210");
+		
+		ah2.addCheckingAccount(1000.0);
+		ah2.addSavingsAccount(10000.0);
+		
+		ah2.addCDAccount(MeritBank.getBestCDOffering(2000), 2000);
+		MeritBank.addAccountHolder(ah2);
+		
+		MeritBank.clearCDOfferings();
+		
+		AccountHolder ah3 = new AccountHolder("Rory", "V.", "Gilmore", "081726354");
+		
+		ah3.addCDAccount(MeritBank.getBestCDOffering(3000), 3000);
+		System.out.println("CD Account Balance: " + ah3.getCDBalance());
+		
+		ah3.addCheckingAccount(1000);
+		ah3.addSavingsAccount(10000);
+		MeritBank.addAccountHolder(ah3);
+		
 	}
 	
 	private static CDOffering []  generateOffers() {
