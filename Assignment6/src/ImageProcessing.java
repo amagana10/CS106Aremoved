@@ -1,7 +1,19 @@
+import java.util.Scanner;
 
-public class ImageProcessing {
+import acm.graphics.*;
 
-	
+public class ImageProcessing extends GraphicsProgram {
+       private String file;
+	private Object GImage;
+
+	public <GImage> void run() {
+    	 Scanner scan = new Scanner(System.in);
+    	 file =scan.nextLine();
+		GImage image = new GImage(file);
+		add(image);
+       }
+
+
 	private GImage flipHorizontal(GImage image) {
 		
 		int[][] array = image.getPixelArray();
