@@ -1,0 +1,84 @@
+// create database roster
+
+create database roster;
+ // create user , course and Member
+
+CREATE TABLE `User` (
+    user_id     INTEGER NOT NULL AUTO_INCREMENT,
+    name        VARCHAR(128) UNIQUE,
+    PRIMARY KEY(user_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+CREATE TABLE Course (
+    course_id     INTEGER NOT NULL AUTO_INCREMENT,
+    title         VARCHAR(128) UNIQUE,
+    PRIMARY KEY(course_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+CREATE TABLE Member (
+    user_id       INTEGER,
+    course_id     INTEGER,
+    role          INTEGER,
+
+    CONSTRAINT FOREIGN KEY (user_id) REFERENCES `User` (user_id)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (course_id) REFERENCES Course (course_id)
+       ON DELETE CASCADE ON UPDATE CASCADE,
+
+    PRIMARY KEY (user_id, course_id)
+) ENGINE=InnoDB CHARACTER SET=utf8;
+
+//insert user data for 15 
+
+use roster;
+insert into `User` (user_id, name) values (1,"Samual");
+insert into `User` (user_id, name) values (2,"Arwen");
+insert into `User` (user_id, name) values (3,"Cadence");
+insert into `User` (user_id, name) values (4,"Ehsan");
+insert into `User` (user_id, name) values (5,"Mungo");
+insert into `User` (user_id, name) values (6,"Blair");
+insert into `User` (user_id, name) values (7,"Avesta");
+insert into `User` (user_id, name) values (8,"Oz");
+insert into `User` (user_id, name) values (9,"Rees");
+insert into `User` (user_id, name) values (10,"Yasmeen");
+insert into `User` (user_id, name) values (11,"Brendyn");
+insert into `User` (user_id, name) values (12,"Amani");
+insert into `User` (user_id, name) values (13,"Annagayle");
+insert into `User` (user_id, name) values (14,"Azedine");
+insert into `User` (user_id, name) values (15,"Leyia");
+
+// go and then insert course data for 3 courses
+
+use roster;
+insert into course (course_id, title) values (1, "si106");
+insert into course (course_id, title) values (2, "si110");
+insert into course (course_id, title) values (3, "si206");
+
+// go and then insert Member data for 15
+
+use roster;
+insert into Member (user_id, course_id, role)  values (1,1,1);
+insert into Member (user_id, course_id, role)  values (2,1,0);
+insert into Member (user_id, course_id, role)  values (3,1,0);
+insert into Member (user_id, course_id, role)  values (4,1,0);
+insert into Member (user_id, course_id, role)  values (5,1,0);
+insert into Member (user_id, course_id, role)  values (6,2,1);
+insert into Member (user_id, course_id, role)  values (7,2,0);
+insert into Member (user_id, course_id, role)  values (8,2,0);
+insert into Member (user_id, course_id, role)  values (9,2,0);
+insert into Member (user_id, course_id, role)  values (10,2,0);
+insert into Member (user_id, course_id, role)  values (11,3,1);
+insert into Member (user_id, course_id, role)  values (12,3,0);
+insert into Member (user_id, course_id, role)  values (13,3,0);
+insert into Member (user_id, course_id, role)  values (14,3,0);
+insert into Member (user_id, course_id, role)  values (15,3,0);
+
+// for checking purpose
+
+use roster;
+SELECT `User`.name, Course.title, Member.role
+    FROM `User` JOIN Member JOIN Course
+    ON `User`.user_id = Member.user_id AND Member.course_id = Course.course_id
+    ORDER BY Course.title, Member.role DESC, `User`.name;
+
+
